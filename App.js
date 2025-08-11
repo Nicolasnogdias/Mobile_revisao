@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+// Importa o React, biblioteca fundamental para criar componentes
+import { NavigationContainer } from '@react-navigation/native';
+// NavigationContainer é o componente que gerencia o estado de navegação
+import AppNavigator from './components/AppNavigation.js';
+// Importa nosso componente de navegação personalizado
 
 export default function App() {
+  // Componente principal do aplicativo
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      {/* Envolve toda a navegação do app */}
+      <AppNavigator />
+      {/* Renderiza nosso sistema de navegação */}
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
