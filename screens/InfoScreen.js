@@ -1,20 +1,61 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, FlatList } from 'react-native';
+
+
+const ferramentas = [
+  { 
+    id: '1',
+    name: 'Martelo',
+    price:'R$ 19,99',
+    utility:'Um martelo serve para destruir coisas',
+    image: require('../assets/martelo.jpg'),
+  },
+  { 
+    id: '2',
+    name: 'Parafusadeira',
+    price:'R$ 39,99',
+    utility:'Serve para parafusar e desparafusar',
+    image: require('../assets/parafusadeira.jpg'),
+  },
+  { 
+    id: '3',
+    name: 'Tesoura',
+    price:'R$ 48,29',
+    utility:'Serve para cortar coisas',
+    image: require('../assets/tesoura.jpg'),
+  },
+  { 
+    id: '4',
+    name: 'Trena',
+    price:'R$ 32,20',
+    utility:'Serve para medir o tamanho de coisas',
+    image: require('../assets/trena.jpg'),
+  },
+  { 
+    id: '5',
+    name: 'Fita',
+    price:'R$ 18,90',
+    utility:'Serve para grudar, juntar ou isolar coisas',
+    image: require('../assets/fita.jpg'),
+  },
+];
 
 const InfoScreen = () => {
   return(
-    <ScrollView style = {styles.container}>
-      <View style = {styles.content}>
-      <Text style = {styles.title}> A Calculadora de 4 operações </Text>
-      <Image 
-      source={require('../assets/calculadora.jpg')}
-      style = {styles.image}
-      />
-      <Text syle = {styles.text}>
-      A calculadora de quatro operações é uma ferramenta prática que permite realizar cálculos básicos de adição, subtração, multiplicação e divisão. Desenvolvida com uma interface intuitiva, ela facilita o uso mesmo por usuários iniciantes, sendo ideal para atividades simples do dia a dia ou fins educacionais.</Text>
-      </View>
-      </ScrollView>
-  )
+    <View style = {styles.container}>
+      <FlatList
+      data={ferramentas}
+      renderItem={({item}) => (
+        <View style={styles.content}>
+        <Text style={styles.FerraName}>{item.name}</Text>
+        <Text style={styles.FerraPrice}>{item.price}</Text>
+        <Text style={styles.FerraUtil}>{item.utility}</Text>
+        <Image source={item.image} style={styles.FerraImage} resizeMode='contain'/>
+</View>
+  )}
+/>
+  </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -26,20 +67,26 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center',
   },
-  title: {
+  FerraName: {
     fontSize: 30,
     fontWeight: 'bold',
     marginBottom: 15,
     color: 'black',
   },
-  text: {
+  FerraPrice: {
     fontSize: 20,
     lineHeight: 24,
     color: 'black',
     marginBottom: 5,
   },
-  image: {
-    width: '100%',
+  FerraUtil: {
+    fontSize: 20,
+    lineHeight: 24,
+    color: 'black',
+    marginBottom: 5,
+  },
+  FerraImage: {
+    width: 200,
     height: 200,
     borderRadius: 8,
     marginBottom: 20,
